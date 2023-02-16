@@ -1,0 +1,141 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace ConsoleApp114
+{
+    internal class Program
+    {
+        public class Product
+        {
+            public string Name { get; set; }
+            public DateTime Date { get; set; }
+            public int ExerDate { get; set; }
+            public string Master { get; set; }
+            public DateTime Sales_Date { get; set; }
+            public int Sales_Num { get; set; }
+            public int Num { get; set; }
+         }
+         public static int Break(){
+                throw new IndexOutOfRangeException();
+            }
+         public static int F_Name(int n,string[] Master,string[] Name){
+             Console.WriteLine("Введите производителя");
+             string F_master = Console.ReadLine();
+             for(int j=0;j<n;j++){
+                if (F_master==Master[j]) Console.WriteLine(Name[j]);}
+                return 0;
+         } 
+         
+         public static int New(int n, DateTime[] Date, int[] ExerDate,string[] Name){
+             for(int j=0;j<n;j++){
+                    if (Date[j].AddDays(ExerDate[j])<DateTime.Now) Console.WriteLine($"Продукт {Name[j]} несвежий");}
+                    return 0;
+         }
+         
+         public static int Left(int n,int[] Num, int[] Sales_num,string[] Name){
+             for(int j=0;j<n;j++){
+                if (Num[j]-Sales_num[j]>0) Console.WriteLine($"Товара {Name[j]} осталось {Num[j]-Sales_num[j]}");}
+                return 0;
+         }
+         
+         public static int Zero(int n,int[] Num, int[] Sales_num,string[] Name){
+             for(int j=0;j<n;j++){
+                    if(Num[j]-Sales_num[j]==0) Console.WriteLine($"Товар {Name[j]} продан без остатка");}
+                    return 0;
+         }
+        public static int Print(int n,string[] Name,DateTime[] Date,int[] ExerDate,string[] Master,DateTime[] Sales_date,int[] Sales_num,int[] Num)
+            {
+                int i = 0;
+                for (i = 0; i < n; i++)
+                {
+                    Console.WriteLine(" __________________________________________________\n");
+                    Console.WriteLine($" | {Name[i]} | {Date[i]} | {ExerDate[i]} | {Master[i]} | {Sales_date[i]} | {Sales_num[i]} | {Num[i]} |\n");
+                }
+                return 0;
+            }
+        static void Main()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int i = 0;
+            string[] Name = new string[n];
+            DateTime[] Date = new DateTime[n];
+            int[] ExerDate = new int[n];
+            string[] Master = new string[n];
+            DateTime[] Sales_date = new DateTime[n];
+            int[] Sales_num = new int[n];
+            int[] Num = new int[n];
+            while (i < n)
+            {
+                var productList = new List<Product>();
+                var product = new Product();
+                Console.WriteLine("Наименование товара:");
+                string name = Console.ReadLine();
+                product.Name = name;
+                Name[i] = name;
+
+                Console.WriteLine("Дата изготовления(гггг,мм,дд):");
+                string ddate=Console.ReadLine();
+                DateTime date=DateTime.Parse(ddate);
+                product.Date = date;
+                Date[i] = date;
+
+                Console.WriteLine("Срок годности(в сутках):");
+                int exerdate = Convert.ToInt32(Console.ReadLine());
+                product.ExerDate = exerdate;
+                ExerDate[i] = exerdate;
+
+                Console.WriteLine("Производитель:");
+                string master = Console.ReadLine();
+                product.Master = master;
+                Master[i] = master;
+
+                Console.WriteLine("Данные о продаже(дата):");
+                string ssales_date = Console.ReadLine();
+                DateTime sales_date=DateTime.Parse(ssales_date);
+                product.Sales_Date = sales_date;
+                Sales_date[i] = sales_date;
+
+                Console.WriteLine("Данные о продаже(кол-во):");
+                int sales_num = Convert.ToInt32(Console.ReadLine());
+                product.Sales_Num = sales_num;
+                Sales_num[i] = sales_num;
+
+                Console.WriteLine("Общее кол-во товара:");
+                int num = Convert.ToInt32(Console.ReadLine());
+                product.Num = num;
+                Num[i] = num;
+
+                productList.Add(product);
+                
+                i++;
+            }
+            Console.WriteLine("Меню");
+            Console.WriteLine("1. База товаров");
+            Console.WriteLine("2. Поиск по производителю");
+            Console.WriteLine("3. Поиск просрочки");
+            Console.WriteLine("4. Поиск не полностью проданных товаров");
+            Console.WriteLine("5. Поиск полностью проданных товаров");
+            Console.WriteLine("6. Выход");
+            int a=Convert.ToInt32(Console.ReadLine());
+            if (a==1){
+                Print(n,Name,Date,ExerDate,Master,Sales_date,Sales_num,Num);
+            }
+            if (a==2){
+                Console.WriteLine(F_Name(n,Master,Name));
+            }
+            if (a==3){
+                Console.WriteLine(New(n,Date,ExerDate,Name));
+            }
+            if (a==4){
+                Console.WriteLine(Left(n,Num, Sales_num,Name));
+            }
+            if (a==5){
+                Console.WriteLine(Zero(n,Num,Sales_num,Name));
+            }
+            if (a==6)Break(); else Break();
+            Console.ReadLine();
+        }
+    }
+}
