@@ -1,0 +1,69 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication37
+{
+    class Program
+    {
+        public static int BinarySearch(int[] mas, int b){
+            Array.Sort(mas);
+            return Array.BinarySearch(mas, 0, 5, b);}
+        public static Array[] Clear(int[] mas){ return Clear(mas);}
+        public static int Copy(int[] mas) { int[] mas2 = new int[5] { 0, 0, 0, 0, 0 }; Array.Copy(mas, mas2, 5); for (int i = 0; i < 5; i++) { Console.Write(mas2[i]+" "); } return 0; }
+        public static Array CreateInstance(){
+                return Array.CreateInstance(typeof(int), 5);
+        }
+        public static Boolean Exists(int[] mas,int b) { return Array.Exists(mas,el => el==b); }
+        public static int Sort(int[] mas) { Array.Sort(mas); for (int i = 0; i < 5; i++) { Console.Write(mas[i] + " "); } return 0; }
+        public static int IndexOf(int[] mas,int d) { int i = Array.IndexOf(mas,d); return i; }
+        public static int Reverse(int[] mas) { Array.Reverse(mas); for (int i = 0; i < 5; i++) { Console.Write(mas[i] + " "); } return 0; }
+        public static int LastIndexOf(int[] mas, int e) { int i = Array.LastIndexOf(mas, e); return i; }
+        public static int SetValue(int[] mas, int f,int g) { mas.SetValue(f,g); for (int i = 0; i < 5; i++) { Console.Write(mas[i] + " "); } return 0; }
+        static void Main(string[] args)
+        {
+            int[] mas = new int[5] {2,5,1,7,345};
+            Console.WriteLine("Menu");
+            Console.WriteLine("1. BinarySearch");
+            Console.WriteLine("2. Clear");
+            Console.WriteLine("3. Copy");
+            Console.WriteLine("4. CreateInstance");
+            Console.WriteLine("5. Exists");
+            Console.WriteLine("6. Sort");
+            Console.WriteLine("7. IndexOf");
+            Console.WriteLine("8. Reverse");
+            Console.WriteLine("9. LastIndexOf");
+            Console.WriteLine("10. SetValue");
+            int a = Convert.ToInt32(Console.ReadLine());
+            switch(a){
+                case 1: int b = Convert.ToInt32(Console.ReadLine()); Console.WriteLine(BinarySearch(mas,b)); break;
+                case 2: Console.WriteLine(Clear(mas)); break;
+                case 3: Copy(mas); break;
+                case 4: Console.WriteLine(CreateInstance()); break;
+                case 5: int c = Convert.ToInt32(Console.ReadLine()); Console.WriteLine(Exists(mas,c)); break;
+                case 6: Sort(mas); break;
+                case 7: int d = Convert.ToInt32(Console.ReadLine()); Console.WriteLine(IndexOf(mas,d)); break;
+                case 8: Reverse(mas); break;
+                case 9: int e = Convert.ToInt32(Console.ReadLine()); Console.WriteLine(LastIndexOf(mas, e)); break;
+                case 10: int f = Convert.ToInt32(Console.ReadLine()),g= Convert.ToInt32(Console.ReadLine()); SetValue(mas,f,g); break;
+
+            }
+        }
+    }
+}
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
