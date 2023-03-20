@@ -1,0 +1,23 @@
+inf=9999
+def printS(nV,dis):
+    for i in range(nV):
+        for j in range(nV):
+            if(dis[i][j]==inf):
+                print("INF", end=" ")
+            else:
+                print(dis[i][j], end=" ")
+        print(" ")
+def floyd(nV,G):
+    dis=G
+    for k in range(nV):
+        for i in range(nV):
+            for j in range(nV):
+                dis[i][j]=min(dis[i][j],dis[i][k]+dis[k][j])
+    printS(nV,dis)
+G=[[0,10,18,8,inf,inf],
+    [10,0,16,9,21,inf],
+    [inf,16,0,inf,inf,15],
+    [7,9,inf,0,inf,12],
+    [inf,inf,inf,inf,0,23],
+    [inf,inf,15,inf,23,0]]
+floyd(6,G)
