@@ -1,0 +1,123 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data;
+
+class Program
+{
+    public static void Print(Queue<int> queue)
+    {
+        foreach (int element in queue)
+        {
+            Console.Write($"{element}  ");
+           
+        }
+        Console.WriteLine();
+    }
+    public static void Enqueue(Queue<int> queue)
+    {
+        int n= Convert.ToInt32(Console.ReadLine());
+        for (int i=0; i<n;i++)
+        {
+            int a = Convert.ToInt32(Console.ReadLine());
+            queue.Enqueue(a);
+        }
+        Print(queue);
+    }
+    public static void Clear(Queue<int> queue)
+    {
+        Enqueue(queue);
+        queue.Clear();
+        Print (queue);
+        Console.WriteLine("Очистка прошла успешно!");
+    }
+    public static void Contains(Queue <int> queue)
+    {
+        Enqueue(queue);
+        int item= Convert.ToInt32(Console.ReadLine());
+        bool result= queue.Contains(item);
+        if (result== true)
+        {
+            Console.WriteLine("Элемент найден!");
+        }
+        else
+        {
+            Console.WriteLine("Элемент не найден!");
+        }
+    }
+    public static void Peek(Queue <int> queue)
+    {
+        Enqueue(queue);
+        int peek= queue.Peek();
+        Console.WriteLine(peek);
+    }
+    public static void Average(Queue <int> queue)
+    {
+        Enqueue(queue);
+        double average= queue.Average();
+        Console.WriteLine(average);
+    }
+    public static void Count(Queue <int> queue)
+    {
+        Enqueue(queue);
+        int count= queue.Count();
+        Console.WriteLine(count);
+    }
+    public static void Last(Queue <int> queue) 
+    { 
+        Enqueue(queue); 
+        int last= queue.Last();
+        Console.WriteLine(last);
+    }
+    public static void Max(Queue <int> queue)
+    {
+        Enqueue(queue);
+        int max= queue.Max();
+        Console.WriteLine(max);
+    }
+    public static void Reverse(Queue <int> queue)
+    {
+        Enqueue(queue);
+        Queue < int > queueR = new Queue<int> (queue.Reverse());
+        foreach (int element in queueR)
+        {
+            Console.Write($"{element}   ");
+        }
+        Console.WriteLine();
+    }
+
+    static void Main()
+    {
+        Queue<int> queue = new Queue<int>();
+        Console.WriteLine("Menu");
+        Console.WriteLine("1. Enqueue");
+        Console.WriteLine("2. Clear");
+        Console.WriteLine("3. Contains");
+        Console.WriteLine("4. Peek");
+        Console.WriteLine("5. Average");
+        Console.WriteLine("6. Count");
+        Console.WriteLine("7. Last");
+        Console.WriteLine("8. Max");
+        Console.WriteLine("9. Reverse");
+
+
+        int choose = Convert.ToInt32(Console.ReadLine());
+        switch (choose)
+        {
+            case 1: Enqueue(queue); break;
+            case 2: Clear(queue); break;
+            case 3: Contains(queue); break;
+            case 4: Peek(queue); break;
+            case 5: Average(queue); break;
+            case 6: Count(queue); break;
+            case 7: Last(queue); break;
+            case 8: Max(queue); break;
+            case 9: Reverse(queue); break;
+        }
+        if ((choose <=0)&&(choose>=11))
+            {
+            Console.WriteLine("Такого варианта ответа не существует..");
+        }
+    }
+}
