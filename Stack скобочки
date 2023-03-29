@@ -1,0 +1,38 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+class HelloWorld {
+    public static void ShowPush(Stack<Char> st, char a){
+        st.Push(a);
+    }
+    public static void SOLVE(string str,Stack<Char> st){
+        int count=0, count2=0;
+        foreach(char i in str){
+            if (((i==')') ||(i=='}') ||(i==']')) && (count>0)&&(count<2)) Console.WriteLine("NOOOOOO");
+            if ((i=='{')||(i=='[')||(i=='(')) count++;
+            if ((i==')') ||(i=='}') ||(i==']')) count2++;
+        }
+        if (count==count2){
+            foreach(char i in str){
+              if ((i=='{')||(i=='[')||(i=='(')){ShowPush(st,i);}
+              else if (i=='}'){
+                      if (st.Peek()=='{') st.Pop();}
+              else if (i==']'){
+                      if (st.Peek()=='[') st.Pop();}
+              else if (i==')'){
+                      if (st.Peek()=='(') st.Pop();}
+            }
+            if (st.Count==0){ Console.WriteLine("Ye");
+            try{st.Pop();}
+                catch(InvalidOperationException){Console.WriteLine("Стек пуст...");} }
+            else Console.WriteLine("No");
+        }
+        else Console.WriteLine("No");
+        
+    }
+    static void Main() {
+      string str="]](";
+      Stack<Char> st = new Stack<Char>();
+      SOLVE(str,st);
+      } 
+  }
