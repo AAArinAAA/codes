@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
+namespace ConsoleApplication37
+{
+    class Program
+    {
+        public static int Add(ArrayList al)
+        {
+            int k = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < k; i++)
+            {
+                al.Add(Console.ReadLine());
+            }
+            for (int i = 0; i < al.Count; i++) { Console.Write(al[i] + " "); }
+            return 0;
+        }
+        public static int Remove(ArrayList al)
+        {
+            int k = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < k; i++)
+            {
+                string l = Console.ReadLine();
+                if (al.IndexOf(l)!=-1) al.Remove(l);
+            }
+            for (int i = 0; i < al.Count; i++) { Console.Write(al[i] + " "); }
+            return 0;
+        }
+        public static int Count(ArrayList al) {
+            return al.Count; 
+        }
+
+        public static int Capacity(ArrayList al)
+        {
+            return al.Capacity;
+        }
+        public static int BinarySearch(ArrayList al) { string k = Console.ReadLine(); return al.BinarySearch(k); }
+        public static int Sort(ArrayList al) { al.Sort(); for (int i = 0; i < al.Count; i++) { Console.Write(al[i] + " "); } return 0; }
+        public static int IndexOf(ArrayList al) { string l = Console.ReadLine();  return al.IndexOf(l); }
+        public static int Reverse(ArrayList al) { al.Reverse(); for (int i = 0; i < al.Count; i++) { Console.Write(al[i] + " "); } return 0; }
+        public static int CopyTo(ArrayList al) { 
+            String[] kak = new String[15]; 
+            int u = Convert.ToInt32(Console.ReadLine()); 
+            al.CopyTo(u, kak, 0, 2);
+            for (int i = 0; i < al.Count; i++)
+            { 
+                Console.Write(kak[i] + " "); 
+            } 
+            return 0; 
+        }
+        public static int InsertRange(ArrayList al) {
+            ArrayList kak = new ArrayList() { "o", "o", "o", "o", "o" }; 
+            kak.InsertRange(0,al);
+            for (int i = 0; i < al.Count; i++) { Console.Write(kak[i] + " "); } return 0;
+        }
+        static void Main(string[] args)
+        {
+            ArrayList al = new ArrayList() { "A", "D", "F", "W", "S" }; 
+            Console.WriteLine("Menu");
+            Console.WriteLine("1. Add");
+            Console.WriteLine("2. Remove");
+            Console.WriteLine("3. Count");
+            Console.WriteLine("4. Capacity");
+            Console.WriteLine("5. BinarySearch");
+            Console.WriteLine("6. Sort");
+            Console.WriteLine("7. IndexOf");
+            Console.WriteLine("8. Reverse");
+            Console.WriteLine("9. CopyTo");
+            Console.WriteLine("10. InsertRange");
+            int a = Convert.ToInt32(Console.ReadLine());
+            switch (a)
+            {
+                case 1: Add(al); break;
+                case 2: Remove(al); break;
+                case 3: Console.WriteLine(Count(al)); break;
+                case 4: Console.WriteLine(Capacity(al)); break;
+                case 5: Console.WriteLine(BinarySearch(al)); break;
+                case 6: Sort(al); break;
+                case 7: Console.WriteLine(IndexOf(al)); break;
+                case 8: Reverse(al); break;
+                case 9: CopyTo(al); break;
+                case 10: InsertRange(al); break;
+
+            }
+        }
+    }
+}
