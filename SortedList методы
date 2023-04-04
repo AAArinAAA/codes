@@ -1,0 +1,109 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
+namespace ConsoleApplication37
+{
+    class Program
+    {
+        public static int Add(SortedList al)
+        {
+            al.Add("rdfg","agre");
+            for ( int i = 0; i < al.Count; i++ )  {
+         Console.WriteLine( "\t{0}:\t{1}", al.GetKey(i), al.GetByIndex(i) );
+      }
+            return 0;
+        }
+        public static int Clear(SortedList al)
+        {
+            al.Clear();
+            for ( int i = 0; i < al.Count; i++ )  {
+         Console.WriteLine( "\t{0}:\t{1}", al.GetKey(i), al.GetByIndex(i) );
+      }
+            return 0;
+        }
+        public static int Clone(SortedList al) {
+             al.Clone();
+            for ( int i = 0; i < al.Count; i++ )  {
+         Console.WriteLine( "\t{0}:\t{1}", al.GetKey(i), al.GetByIndex(i) );
+      }
+            return 0; 
+        }
+
+        public static int ContainsKey(SortedList al)
+        {
+            string k=Console.ReadLine();
+            Console.WriteLine(al.ContainsKey(k));
+            return 0;
+        }
+        public static int ContainsValue(SortedList al)
+        {
+            string k=Console.ReadLine();
+            Console.WriteLine(al.ContainsValue(k));
+            return 0;
+        }
+        public static int GetKey(SortedList al)
+        {
+            int k=Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(al.GetKey(k));
+            return 0;
+        }
+        public static int Remove(SortedList al) { al.Remove("!"); for ( int i = 0; i < al.Count; i++ )  {
+         Console.WriteLine( "\t{0}:\t{1}", al.GetKey(i), al.GetByIndex(i) );
+      } return 0; }
+        public static int GetByIndex(SortedList al) { 
+            int k=Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(al.GetByIndex(k));
+            return 0; }
+        public static int GetKeyList(SortedList al) {
+            IList my = al.GetKeyList();
+            for ( int i = 0; i < my.Count; i++ )  {
+         Console.WriteLine(my[i] +" ");
+      }
+            return 0;
+        }
+        public static int GetValueList(SortedList al) {
+            IList my = al.GetValueList();
+            for ( int i = 0; i < my.Count; i++ )  {
+         Console.WriteLine(my[i] +" ");
+      }
+            return 0;
+        }
+        static void Main(string[] args)
+        {
+            SortedList al = new SortedList();
+            al.Add("Third", "!");
+            al.Add("Second", "World");
+            al.Add("First", "Hello");
+            Console.WriteLine("Menu");
+            Console.WriteLine("1. Add");
+            Console.WriteLine("2. Clear");
+            Console.WriteLine("3. Clone");
+            Console.WriteLine("4. ContainsKey");
+            Console.WriteLine("5. ContainsValue");
+            Console.WriteLine("6. GetKey");
+            Console.WriteLine("7. Remove");
+            Console.WriteLine("8. GetByIndex");
+            Console.WriteLine("9. GetKeyList");
+            Console.WriteLine("10. GetValueList");
+            int a = Convert.ToInt32(Console.ReadLine());
+            switch (a)
+            {
+                case 1: Add(al); break;
+                case 2: Clear(al); break;
+                case 3: Clone(al); break;
+                case 4: ContainsKey(al); break;
+                case 5: ContainsValue(al); break;
+                case 6: GetKey(al); break;
+                case 7: Remove(al); break;
+                case 8: GetByIndex(al); break;
+                case 9: GetKeyList(al); break;
+                case 10: GetValueList(al); break;
+
+            }
+        }
+    }
+}
