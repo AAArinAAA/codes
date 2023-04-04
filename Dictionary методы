@@ -1,0 +1,104 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
+
+class Program
+{
+    public static void Print(Dictionary <int, string> dict)
+    {
+        foreach (var pair in dict)
+        {
+            Console.WriteLine($"{pair.Key} : {pair.Value} ");
+        }
+    }
+    public static void Add(Dictionary <int, string> dict)
+    {
+        int n = Convert.ToInt32(Console.ReadLine());
+        for (int i=0; i<n; i++)
+        {
+            int digit= Convert.ToInt32(Console.ReadLine()); 
+            string name= Console.ReadLine();
+            dict.Add(digit, name);
+        }
+        Print (dict);
+    }
+    public static void Clear(Dictionary <int, string> dict)
+    {
+        Add(dict);
+        dict.Clear();
+        Print (dict);
+    }
+    public static void ContainsKey(Dictionary <int, string> dict)
+    {
+        Add(dict);
+        int key= Convert.ToInt32(Console.ReadLine());
+        bool result= dict.ContainsKey(key);
+        Console.WriteLine(result);
+    }
+    public static void ContainsValue(Dictionary <int, string> dict)
+    {
+        Add(dict);
+        string value= Console.ReadLine();
+        bool result= dict.ContainsValue(value);
+        Console.WriteLine(result);
+    }
+    public static void GetHashCode(Dictionary <int, string> dict)
+    {
+        Add(dict);
+        Print(dict);
+        int n = dict.GetHashCode();
+        Console.WriteLine(n);
+    }
+    public static void Remove(Dictionary <int, string> dict)
+    {
+        Add(dict);
+        Print(dict);
+        int key= Convert.ToInt32 (Console.ReadLine());
+        bool result= dict.Remove(key);
+        Console.WriteLine(result);
+        Print(dict);
+    }
+    public static void TryAdd(Dictionary<int, string> dict)
+    {
+        Add(dict);
+        Print(dict);
+        int n= Convert.ToInt32 (Console.ReadLine());
+        for (int i=0; i<n; i++)
+        {
+            int digit= Convert.ToInt32(Console.ReadLine()); 
+            string name= Console.ReadLine();
+            bool result= dict.TryAdd(digit, name);
+            Console.WriteLine(result);
+        }
+        Print(dict);
+    }
+    static void Main()
+    {
+        Dictionary <int, string>  dict = new Dictionary<int, string>();
+        Console.WriteLine("Menu");
+        Console.WriteLine("1. Add");
+        Console.WriteLine("2. Clear");
+        Console.WriteLine("3. ContainsKey");
+        Console.WriteLine("4. ContainsValue");
+        Console.WriteLine("5. GetHashCode");
+        Console.WriteLine("6. Remove");
+        Console.WriteLine("7. TryAdd");
+
+        int a= Convert.ToInt32(Console.ReadLine());
+
+        switch (a)
+        {
+            case 1: Add(dict); break;
+            case 2: Clear(dict); break;
+            case 3: ContainsKey(dict); break;
+            case 4: ContainsValue(dict); break;
+            case 5: GetHashCode(dict); break;
+            case 6: Remove(dict); break;
+            case 7: TryAdd(dict); break;
+
+        }
+
+    }
+}
