@@ -1,0 +1,104 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
+
+class HashSet
+{
+    public static void Add(HashSet<int> a)
+    {
+        int n=Convert.ToInt32(Console.ReadLine());
+        for (int i=0; i<n; i++)
+        {
+            int digit= Convert.ToInt32(Console.ReadLine()); 
+            a.Add(digit);
+        }
+        Print(a);
+    }
+    public static void Clear(HashSet<int> a)
+    {
+        Add(a);
+        a.Clear();
+        Print(a);
+    }
+    public static void Contains(HashSet<int> a)
+    {
+        Add(a);
+        int search= Convert.ToInt32(Console.ReadLine()); 
+        bool result = a.Contains(search);
+        Console.WriteLine(result);
+    }
+    public static void CopyTo(HashSet<int> a)
+    {
+        Add(a);
+        int[] b = new int[] { 0, 1, 2, 3 };
+        a.CopyTo(b);
+        for(int i=0; i<b.Length; i++)
+        {
+            Console.Write(b[i]);
+        }
+    }
+    public static void GetHashCode(HashSet<int> a)
+    {
+        Add(a);
+        int HashCode = a.GetHashCode();
+        Console.WriteLine(HashCode);
+    }
+    public static void Remove(HashSet<int> a)
+    {
+        Add(a);
+        int digit= Convert.ToInt32(Console.ReadLine());
+        a.Remove(digit);
+        Print(a);
+    }
+    public static void TryGetValue(HashSet<int> a)
+    {
+        Add(a);
+        int find= Convert.ToInt32(Console.ReadLine());
+        var auto=Convert.ToInt32(Console.ReadLine());   
+        bool result=a.TryGetValue(find, out var value);
+        Console.WriteLine(result);
+    }
+
+
+    public static void Print(HashSet<int> a)
+    {
+        foreach (int i in a)
+        {
+            Console.Write($"{i}   " );
+        }
+        Console.WriteLine();
+        Console.WriteLine("Вывод окончен!");
+    }
+    static void Main()
+    {
+        HashSet<int> a = new HashSet<int>();
+        Array b = new int [] {0,1,2,3};
+        Console.WriteLine("Menu");
+        Console.WriteLine("1. Add");
+        Console.WriteLine("2. Clear");
+        Console.WriteLine("3. Contains");
+        Console.WriteLine("4. CopyTo");
+        Console.WriteLine("5. GetHashCode");
+        Console.WriteLine("6. Remove");
+        Console.WriteLine("7. TryGetValue");
+
+
+
+
+
+        int choose= Convert.ToInt32(Console.ReadLine());
+        switch (choose)
+            {
+            case 1: Add(a); break;
+            case 2: Clear(a); break;
+            case 3: Contains(a); break;
+            case 4: CopyTo(a); break;
+            case 5: GetHashCode(a); break;
+            case 6: Remove(a); break;
+            case 7: TryGetValue(a); break;
+
+        }
+    }
+}
