@@ -1,0 +1,46 @@
+using System;
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Выберите одну из трех лошадей");
+        int i = Convert.ToInt32(Console.ReadLine());
+        Random rand = new Random();
+
+        int first1= rand.Next(0, 70);
+        int second1= rand.Next(0, 70);
+        int third1= rand.Next(0, 70);
+
+        int first2 = rand.Next(0, 70);
+        int second2 = rand.Next(0, 70);
+        int third2 = rand.Next(0, 70);
+
+        int first3 = rand.Next(0, 70);
+        int second3 = rand.Next(0, 70);
+        int third3 = rand.Next(0, 70);
+
+        int first4 = rand.Next(0, 70);
+        int second4 = rand.Next(0, 70);
+        int third4 = rand.Next(0, 70);
+
+        int v1= first1+ first2+first3+ first4;
+        int v2= second1+ second2+second3+ second4;
+        int v3= third1+ third2+third3+ third4;
+
+        int max_v = Math.Max(v1, Math.Max(v2,v3));
+        
+        if (((i==1)&&(max_v==v1))||((i == 2) && (max_v == v2))|| ((i == 3) && (max_v == v3)))
+        {
+            Console.WriteLine("YOU WIN!");
+        }
+        else
+        {
+            Console.WriteLine("Вы проиграли. попробуйте еще раз!");
+        }
+        Console.WriteLine($"Средняя скорость первой лошади равна {v1/4}");
+        Console.WriteLine($"Средняя скорость второй лошади равна {v2 / 4}");
+        Console.WriteLine($"Средняя скорость третьей лошади равна {v3 / 4}");
+        Console.WriteLine($"Вы выбрали лошадь {i}");
+        
+    }
+}
