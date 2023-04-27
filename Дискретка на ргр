@@ -1,0 +1,36 @@
+import math 
+f=open("1.txt", "r")
+n=int(f.readline())
+l_info=[]
+inf=99999
+G=[[inf for i in range(n)] for j in range (n)]
+lines=int(f.readline())
+num_str=int(lines)
+for i in range (num_str):
+    l_info.append(f.readline().split())
+l_info.sort()
+for i1 in range (num_str):
+    G[ int(l_info[i1][0])-1 ][ int(l_info[i1][1])-1 ]=int(l_info[i1][2])
+    G[ int(l_info[i1][1])-1 ][ int(l_info[i1][0])-1 ] = int(l_info[i1][2])
+for i in range (n):
+    for j in range (n):
+        if i==j:
+            G[i][j]=0
+for i in range(n):
+    for j in range(n):
+        if G[i][j]==-1:
+            G[i][j]=math.inf
+Gg=[[x for x in range(n)] for q in range(n)]
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            Gg[i][j]=min(G[i][k]+G[k][j],G[i][j])
+    G=Gg
+
+a=int(input())
+b=int(input())
+
+if ((Gg[a-1][b-1])>99998):
+    print (-1)
+else:
+    print (Gg[a-1][b-1])
