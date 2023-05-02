@@ -1,4 +1,6 @@
 import math 
+import os
+clear = lambda: os.system('cls')
 f=open("1.txt", "r")
 n=int(f.readline())
 l_info=[]
@@ -26,7 +28,21 @@ for k in range(n):
         for j in range(n):
             G2[i][j]=min(G[i][k]+G[k][j],G[i][j])
     G=G2
-if ((G2[0][n-1])>99998):
-    print (-1)
-else:
-    print (G2[0][n-1])
+print ('Меню')
+print ('1. Вычисление минимального пути между городами')
+print ('2. Об авторе')
+print ('3. Выход')
+print ('Выберите соответствующий пункт меню')
+choose= int(input())
+if choose==1:
+    if ((G2[0][n-1])>99998):
+        print (-1)
+    else:
+        print (G2[0][n-1])
+if choose==2:
+    print ('Сведения об авторе:')
+    print ('Аристова Арина Андреевна, МО-221')
+if choose==3:
+    print ('  ')
+if (choose!=1 and choose!=2 and choose!=3):
+    print ('Такого пункта меню не существует')
