@@ -1,35 +1,23 @@
 using System;
 class Program
 {
-    static void Main()
+    public static void Case1()
     {
+        Console.Clear();
         Console.WriteLine("Выберите одну из трех лошадей");
-        int i = Convert.ToInt32(Console.ReadLine());
+        int choose = Convert.ToInt32(Console.ReadLine());
         Random rand = new Random();
-
-        int first1= rand.Next(0, 70);
-        int second1= rand.Next(0, 70);
-        int third1= rand.Next(0, 70);
-
-        int first2 = rand.Next(0, 70);
-        int second2 = rand.Next(0, 70);
-        int third2 = rand.Next(0, 70);
-
-        int first3 = rand.Next(0, 70);
-        int second3 = rand.Next(0, 70);
-        int third3 = rand.Next(0, 70);
-
-        int first4 = rand.Next(0, 70);
-        int second4 = rand.Next(0, 70);
-        int third4 = rand.Next(0, 70);
-
-        int v1= first1+ first2+first3+ first4;
-        int v2= second1+ second2+second3+ second4;
-        int v3= third1+ third2+third3+ third4;
-
-        int max_v = Math.Max(v1, Math.Max(v2,v3));
-        
-        if (((i==1)&&(max_v==v1))||((i == 2) && (max_v == v2))|| ((i == 3) && (max_v == v3)))
+        int n = 4;
+        int S = 500;
+        int t1 = 0, t2 = 0, t3 = 0;
+        for (int i = 0; i <= n; i++)
+        {
+            t1 += S / rand.Next(10, 20);
+            t2 += S / rand.Next(10, 20);
+            t3 += S / rand.Next(10, 20);
+        }
+        int min_t = Math.Min(t1, Math.Min(t2, t3));
+        if (((choose == 1) && (min_t == t1)) || ((choose == 2) && (min_t == t2)) || ((choose == 3) && (min_t == t3)))
         {
             Console.WriteLine("YOU WIN!");
         }
@@ -37,10 +25,29 @@ class Program
         {
             Console.WriteLine("Вы проиграли. попробуйте еще раз!");
         }
-        Console.WriteLine($"Средняя скорость первой лошади равна {v1/4}");
-        Console.WriteLine($"Средняя скорость второй лошади равна {v2 / 4}");
-        Console.WriteLine($"Средняя скорость третьей лошади равна {v3 / 4}");
-        Console.WriteLine($"Вы выбрали лошадь {i}");
-        
+        Console.WriteLine($"Время забега первой лошади равно {t1 / 60}:{t1 % 60}");
+        Console.WriteLine($"Время забега второй лошади равно {t2 / 60}:{t2 % 60}");
+        Console.WriteLine($"Время забега третьей лошади равно {t3 / 60}:{t3 % 60}");
+        Console.WriteLine($"Вы выбрали лошадь  {choose}");
+    }
+    public static void Case2()
+    {
+        Console.Clear();
+        Console.WriteLine("Сведения об авторе:");
+        Console.WriteLine("Аристова Арина, МО-221");
+    }
+    static void Main()
+    {
+        Console.WriteLine("Меню");
+        Console.WriteLine("1. Игра Ипподром");
+        Console.WriteLine("2. Сведения об авторе");
+        Console.WriteLine("3. Выход");
+        int a= Convert.ToInt32(Console.ReadLine());
+        switch (a)
+        {
+            case 1: Case1(); break;
+            case 2: Case2(); break;
+            case 3: Console.Clear();  Console.WriteLine(); break;
+        }
     }
 }
