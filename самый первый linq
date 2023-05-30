@@ -1,0 +1,81 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+class HelloWorld {
+    
+    public static void Plus(int[] nums){
+        int count=0;
+        var posNums = from n in nums
+        where n>0
+        select n;
+    Console.Write("Положительных значений: ");
+    foreach(int i in posNums) count++;
+    Console.Write(count);
+        Console.WriteLine();
+    }
+    
+    public static void Minus(int[] nums){
+        int count=0;
+        var posNums2 = from n in nums
+        where n!=0
+        select n;
+    Console.Write("Ненулевых значений: ");
+    foreach(int i in posNums2) count++;
+    Console.Write(count);
+        Console.WriteLine();
+    }
+    
+    public static void Chet(int[] nums){
+        int count=0;
+        var posNums3 = from n in nums
+        where n%2==0
+        select n;
+    Console.Write("Четных значений: ");
+    foreach(int i in posNums3) count++;
+    Console.Write(count);
+        Console.WriteLine();
+    }
+    
+    public static void Max(int[] nums,int max){
+        var posNums4 = from n in nums
+        select n;
+    Console.Write("Максимальное значение: ");
+    foreach(int i in posNums4) if (i>max) max=i;
+    Console.Write(max);
+        Console.WriteLine();
+    }
+    
+    public static void Min(int[] nums, int min){
+        var posNums5 = from n in nums
+        select n;
+    Console.Write("Минимальное значение: ");
+    foreach(int i in posNums5) if (i<min) min=i;
+    Console.Write(min);
+        Console.WriteLine();
+    }
+    
+    
+    
+  static void Main() {
+    int[] nums = {1,0,-4,6,5,3,98,41};
+    int min=nums[0], max=nums[0];
+    Plus(nums);
+    Minus(nums);
+    Chet(nums);
+    Max(nums,max);
+    Min(nums, min);
+    Console.WriteLine();  
+    
+    int[] tmp = nums.Where( x => x >= 0 ).ToArray();
+    nums = tmp;
+    Console.WriteLine( string.Join( " ", nums ) );
+    Console.WriteLine();  
+    
+    Plus(nums);
+    Minus(nums);
+    Chet(nums);
+    Max(nums,max);
+    Min(nums, min);
+    
+  }
+}
