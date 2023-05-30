@@ -1,0 +1,70 @@
+using System;
+using System.Threading;
+using System.Collections.Generic;
+
+namespace SomeApp
+{
+    delegate void Washing(Car car);
+
+    class Car
+    {
+        public string Name { get; }
+        public string Id { get; }
+        public string Driver { get; }
+        public int Time { get; }
+
+        public Car(string name, string id, string driver, int time)
+        {
+            Name = name;
+            Id = id;
+            Driver = driver;
+            Time = time;
+        }
+    }
+
+    class Garage
+    {
+        public List<Car> Cars { get; set; }
+        public Garage()
+        {
+            Cars = new List<Car>();
+        }
+    }
+
+    class CarWashing
+    {
+        public static void WashingCar(Car car)
+        {
+            Console.WriteLine(car.Driver + ", мойка авто " + car.Name + " [" + car.Id + "]" + " займет " + car.Time + " сек.");
+            Thread.Sleep(1000 * car.Time);
+            Console.WriteLine(car.Driver + ", автомобиль " + car.Name + " [" + car.Id + "]" + " как новенький!");
+            Console.ReadKey();
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите количество машин: ");
+            var count_cars = int.Parse(Console.ReadLine());
+            Console.Clear();
+
+            Garage myGarage = new Garage();
+            Washing carWashing = CarWashing.WashingCar;
+            
+            for (int i = 0; i < count_cars; i++)
+            {
+                Console.WriteLine("Введите: авто номер имя");
+                var mas = Console.ReadLine().Split();
+                var time = new Random().Next(2, 7);
+                Car car = new Car(mas[0], mas[1], mas[2], time);
+                Console.Clear();
+                myGarage.Cars.Add(car);
+            }
+
+            foreach (var car in myGarage.Cars)
+                carWashing(car);
+        }
+    }
+}
