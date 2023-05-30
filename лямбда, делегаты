@@ -1,0 +1,39 @@
+using System;
+delegate double Operations(double a,double b, double c);
+class HelloWorld {
+  static void Main() {
+    Console.WriteLine("Меню");
+    Console.WriteLine("1. Умножение");
+    Console.WriteLine("2. Среднее арифметическое");
+    Console.WriteLine("3. Сложение");
+    Console.WriteLine("4. Минимальное");
+    Console.WriteLine("5. Максимальное");
+    Console.WriteLine("Введите 3 числа");
+    double a=Convert.ToDouble(Console.ReadLine()), b=Convert.ToDouble(Console.ReadLine()), c=Convert.ToDouble(Console.ReadLine());
+    int s=Convert.ToInt32(Console.ReadLine());
+    
+    Operations multy = (x,y,z) => x*y*z;
+    double multyResult = multy(a,b,c); 
+    
+    Operations sr = (x,y,z) => (x+y+z)/3;
+    double srResult = sr(a,b,c); 
+    
+    Operations sum = (x,y,z) => x+y+z;
+    double sumResult = sum(a,b,c); 
+    
+    Operations min = (x,y,z) => Math.Min(Math.Min(x,y),z);
+    double minResult = min(a,b,c); 
+    
+    Operations max = (x,y,z) => Math.Max(Math.Max(x,y),z);
+    double maxResult = max(a,b,c); 
+    
+    switch (s){
+        case 1: Console.WriteLine(multyResult);break;
+        case 2: Console.WriteLine(srResult);break;
+        case 3: Console.WriteLine(sumResult);break;
+        case 4: Console.WriteLine(minResult);break;
+        case 5: Console.WriteLine(maxResult);break;
+    }
+    
+  }
+}
