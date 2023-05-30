@@ -1,0 +1,132 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
+namespace ConsoleApplication37
+{
+    class Program
+    {
+        static void Print(List<string> planets)
+        {
+            Console.Clear();
+            Console.WriteLine(String.Join("\n", planets));
+        }
+        static void Add(List<string> planets)
+        {
+            Print(planets);
+            Console.WriteLine("Сколько планет Вы хотите добавить?");
+            int n= Convert.ToInt32(Console.ReadLine());
+            for(int i=0; i<n; i++) 
+            {
+                 Console.WriteLine("Ведите название планеты(первые 4 введены автоматически)");
+            string a= Console.ReadLine();
+            planets.Add(a);
+            }
+            Print(planets);
+        }
+
+        static void Remove(List<string> planets)
+        {
+            Print(planets);
+            Console.WriteLine("Какую планету Вы хотите удалить?");
+            string rem= Console.ReadLine();
+            planets.Remove(rem);
+            Print(planets);
+        }
+        static void GetHashCode(List<string> planets)
+        {
+            int hash= planets.GetHashCode();
+            Console.WriteLine(hash);
+        }
+        static void GetType(List <string>planets)
+        {
+            Console.WriteLine(planets.GetType());
+        }
+        static void BinarySearch(List<string> planets)
+        {
+            Print(planets);
+            Console.WriteLine("Какую планеты хотите найти?");
+            string pl= Console.ReadLine();
+            int number= planets.BinarySearch(pl);
+            if (number<0)
+            {
+                Console.WriteLine("Такой планеты нет в списке");
+            }
+            else Console.WriteLine(number);
+        }
+        static void Sort(List<string> planets)
+        {
+            Print(planets);
+            planets.Sort();
+            Console.ReadKey();
+            Print(planets);
+        }
+        static void IndexOf(List<string> planets)
+        {
+            Print(planets);
+            Console.WriteLine("Индекс какой планеты хоттите узнать?");
+            string pl= Console.ReadLine();
+            int number= planets.IndexOf(pl);
+            if (number < 0)
+            {
+                Console.WriteLine("Такой планеты нет в списке");
+            }
+            else Console.WriteLine(number);
+        }
+        static void Reverse(List<string> planets)
+        {
+            Print(planets);
+            planets.Reverse();
+            Console.ReadKey();
+            Print(planets);
+        }
+        static void CopyTo(List<string> planets)
+        {
+            int n= planets.Count();
+            string[] planet = new string[n];
+            planets.CopyTo(planet, 0);
+            Console.Clear();
+            Console.WriteLine("Массив, составленный из списка планет:");
+            for(int i=0; i<n; i++)
+            {
+                Console.WriteLine(planet[i]);
+            }
+        }
+        static void Main(string[] args)
+        {
+            List<string> planets = new List<string>();
+            planets.Add("Меркурий");
+            planets.Add("Венера");
+            planets.Add("Земля");
+            planets.Add("Марс");
+            Console.WriteLine("Menu");
+            Console.WriteLine("1. Add");
+            Console.WriteLine("2. Remove");
+            Console.WriteLine("3. GetHashCode");
+            Console.WriteLine("4. GetType");
+            Console.WriteLine("5. BinarySearch");
+            Console.WriteLine("6. Sort");
+            Console.WriteLine("7. IndexOf");
+            Console.WriteLine("8. Reverse");
+            Console.WriteLine("9. CopyTo");
+            int a = Convert.ToInt32(Console.ReadLine());
+            switch (a)
+            {
+                case 1: Add(planets); break;
+                case 2: Remove(planets); break;
+                case 3: GetHashCode(planets); break;
+                case 4: GetType(planets); break;
+                case 5: BinarySearch(planets); break;
+                case 6: Sort(planets); break;
+                case 7: IndexOf(planets); break;
+                case 8: Reverse(planets); break;
+                case 9: CopyTo(planets); break;
+                
+
+            }
+        }
+    }
+}
