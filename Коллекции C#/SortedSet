@@ -1,0 +1,93 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
+namespace ConsoleApplication37
+{
+    class Program
+    {
+        static void Print(SortedSet<string> planets)
+        {
+            Console.Clear();
+            Console.WriteLine(String.Join("\n", planets));
+        }
+        static void Add(SortedSet<string> planets)
+        {
+            Print(planets);
+            Console.WriteLine("Сколько планет Вы хотите добавить?");
+            int n = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine("Ведите название планеты(первые 4 введены автоматически)");
+                string a = Console.ReadLine();
+                planets.Add(a);
+            }
+            Print(planets);
+        }
+
+        static void Remove(SortedSet<string> planets)
+        {
+            Print(planets);
+            Console.WriteLine("Какую планету Вы хотите удалить?");
+            string rem = Console.ReadLine();
+            planets.Remove(rem);
+            Print(planets);
+        }
+        static void GetHashCode(SortedSet<string> planets)
+        {
+            int hash = planets.GetHashCode();
+            Console.WriteLine(hash);
+        }
+        static void GetType(SortedSet<string> planets)
+        {
+            Console.WriteLine(planets.GetType());
+        }
+        
+        static void Count(SortedSet<string> planets)
+        {
+            Console.WriteLine(planets.Count());
+        }
+        static void CopyTo(SortedSet<string> planets)
+        {
+            int n = planets.Count();
+            string[] planet = new string[n];
+            planets.CopyTo(planet, 0);
+            Console.Clear();
+            Console.WriteLine("Массив, составленный из списка планет:");
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(planet[i]);
+            }
+        }
+        static void Main(string[] args)
+        {
+            SortedSet<string> planets= new SortedSet<string>();
+            planets.Add("Меркурий");
+            planets.Add("Венера");
+            planets.Add("Земля");
+            planets.Add("Марс");
+            Console.WriteLine("Menu");
+            Console.WriteLine("1. Add");
+            Console.WriteLine("2. Remove");
+            Console.WriteLine("3. GetHashCode");
+            Console.WriteLine("4. GetType");
+            Console.WriteLine("5. Count");
+            Console.WriteLine("6. CopyTo");
+            int a = Convert.ToInt32(Console.ReadLine());
+            switch (a)
+            {
+                case 1: Add(planets); break;
+                case 2: Remove(planets); break;
+                case 3: GetHashCode(planets); break;
+                case 4: GetType(planets); break;
+                case 5: Count(planets); break;
+                case 6: CopyTo(planets); break;
+
+
+            }
+        }
+    }
+}
