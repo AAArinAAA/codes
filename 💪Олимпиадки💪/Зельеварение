@@ -1,0 +1,44 @@
+f=open('t.txt')
+stroka=f.read().split('\n')
+ls_otv=[0 for i in range(len(stroka))]
+for j in range(len(stroka)):
+    b=stroka[j].split()
+    x=""
+    if b[0]=='MIX':
+        x='MX'
+        for i in b:
+            if i!=b[0]:
+                if i.isnumeric():
+                    x+=ls_otv[int(i)-1]
+                else:
+                    x+=i
+        x+='XM'
+    if b[0]=='WATER':
+        x='WT'
+        for i in b:
+            if i!=b[0]:
+                if i.isnumeric():
+                    x+=ls_otv[int(i)-1]
+                else:
+                    x+=i
+        x+='TW'
+    if b[0]=='DUST':
+        x='DT'
+        for i in b:
+            if i!=b[0]:
+                if i.isnumeric():
+                    x+=ls_otv[int(i)-1]
+                else:
+                    x+=i
+        x+='TD'
+    if b[0]=='FIRE':
+        x='FR'
+        for i in b:
+            if i!=b[0]:
+                if i.isnumeric():
+                    x+=ls_otv[int(i)-1]
+                else:
+                    x+=i
+        x+='RF'
+    ls_otv[j]=x   
+print(ls_otv[-1])
