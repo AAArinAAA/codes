@@ -1,0 +1,21 @@
+def finder(pos):
+    I = int(f.readline())
+    edge = dict()
+    for _ in range(I):
+        c, k = f.readline().split()
+        edge[c] = [c for _ in range(int(k))]
+    coll = []
+    for w in range(len(words)):
+        for e in edge.keys():
+            if words[w][pos] == e and edge[e]:
+                coll.append(edge[e].pop())
+                break
+    return len(coll)
+
+
+with open('f.txt', 'r') as f:
+    num = int(f.readline())
+    words = [f.readline().strip() for _ in range(num)]
+    a = finder(0)
+    b = finder(-1)
+    print(str(min(a, b)))
