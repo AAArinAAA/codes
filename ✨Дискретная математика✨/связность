@@ -1,0 +1,21 @@
+def K_S(slov,a,k,och):
+    while len(och)!=0:
+        k.append(och[0])
+        for i in slov[och[0]]:
+            if i not in och and i not in k:
+                och.append(i)
+        a.remove(och[0])
+        och.pop(0) 
+    return a,k,och
+    
+slov={1:[2,5],2:[1,4],3:[4,5],4:[2,3],5:[1,3],6:[7,8],7:[6,8],8:[6,7]}
+a=[1,2,3,4,5,6,7,8]
+k=[]
+och=[1]
+a,k,och=K_S(slov,a,k,och)
+print(k)
+if len(a)!=0:
+    och.append(a[0])
+    k=[]
+    a,k,och=K_S(slov,a,k,och)
+    print(k)
